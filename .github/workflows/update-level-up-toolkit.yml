@@ -1,0 +1,62 @@
+name: Update Level Up Toolkit Data
+
+on:
+  schedule:
+    - cron: "32 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Checkout toolkit source
+        uses: actions/checkout@v4
+        with:
+          repository: VectorMotionX1/level-up-toolkit
+          path: toolkit
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: toolkit/package-lock.json
+
+      - name: Install toolkit dependencies
+        run: npm ci
+        working-directory: toolkit
+
+      - name: Download official manual
+        run: |
+          mkdir -p toolkit/data
+          curl -L "https://link.vex.com/docs/26-27/viqrc/game-manual" -o toolkit/data/manual.pdf
+
+      - name: Rebuild rule reference and changelog
+        run: npm run build:rules
+        working-directory: toolkit
+
+      - name: Copy updated data into site
+        run: cp toolkit/public/rules.json site/level-up-toolkit/rules.json
+
+      - name: Commit updated toolkit data
+        run: |
+          cd site
+          if git diff --quiet -- level-up-toolkit/rules.json; then
+            echo "No Level Up toolkit data changes detected."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add level-up-toolkit/rules.json
+          git commit -m "Update Level Up toolkit data"
+          git push
+
