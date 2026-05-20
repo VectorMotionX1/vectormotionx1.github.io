@@ -140,12 +140,72 @@
       margin-top: 34px;
     }
 
-    .card {
+    .card,
+    .project-card {
       min-height: 170px;
       padding: 22px;
       border: 1px solid var(--line);
       border-radius: 22px;
       background: rgba(255, 255, 255, 0.06);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 38px;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      max-width: 560px;
+      font-size: 1rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      display: grid;
+      gap: 16px;
+      min-height: 230px;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(99, 230, 190, 0.58);
+      background: rgba(255, 255, 255, 0.09);
+      outline: none;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-self: start;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      color: rgba(247, 251, 255, 0.82);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 800;
     }
 
     ul {
@@ -204,6 +264,8 @@
     @media (max-width: 800px) {
       main { padding: 34px 24px; border-radius: 24px; }
       .grid { grid-template-columns: 1fr; }
+      .section-header { display: grid; }
+      .projects { grid-template-columns: 1fr; }
       .actions { flex-direction: column; }
       .button { width: 100%; }
     }
@@ -243,10 +305,34 @@
       </article>
     </section>
 
+    <section aria-labelledby="projects-title">
+      <div class="section-header">
+        <div>
+          <h2 id="projects-title">Project Gallery</h2>
+          <p>Small public tools, prototypes, and demos from the Vector Motion workspace.</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <a class="project-card" href="https://vectormotionx1.github.io/level-up-toolkit/" aria-label="Open VEX IQ Level Up Match Toolkit">
+          <div class="project-meta">
+            <span class="tag">VEX IQ</span>
+            <span class="tag">Robotics</span>
+            <span class="tag">Match Tool</span>
+          </div>
+          <div>
+            <h2>VEX IQ Level Up Match Toolkit</h2>
+            <p>A quick competition helper for Level Up with score tools, rule quick reference, changelog notes, and team planning utilities.</p>
+          </div>
+          <span class="project-link">Open project →</span>
+        </a>
+      </div>
+    </section>
+
     <section class="mission" aria-labelledby="future-title">
       <h2 id="future-title">What I may add here later</h2>
       <ul>
-        <li>Project notes for AI and robotics experiments</li>
+        <li>More project cards for AI and robotics experiments</li>
         <li>Links to demos, repositories, videos, and research notes</li>
         <li>Short explanations of useful concepts in robotics and machine learning</li>
         <li>A portfolio-style index of tools, prototypes, and learning milestones</li>
