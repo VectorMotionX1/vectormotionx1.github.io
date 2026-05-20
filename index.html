@@ -3,8 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vector Motion</title>
-  <meta name="description" content="Vector Motion - a simple GitHub Pages website." />
+  <title>Vector Motion | AI, Robotics, Automation & Intelligent Systems</title>
+  <meta name="description" content="Vector Motion is a personal AI and robotics lab account for collecting ideas, experiments, notes, demos, and projects about artificial intelligence, robotics, automation, computer vision, and intelligent motion." />
+  <meta name="keywords" content="Vector Motion, AI, artificial intelligence, robotics, automation, intelligent systems, robot motion, computer vision, machine learning, GitHub Pages, personal lab" />
+  <meta name="author" content="Vector Motion" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://damifan2016.github.io/vectormotion.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vector Motion | AI and Robotics Notes" />
+  <meta property="og:description" content="A personal space for AI, robotics, automation, and intelligent systems experiments." />
+  <meta property="og:url" content="https://damifan2016.github.io/vectormotion.github.io/" />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Vector Motion",
+    "url": "https://damifan2016.github.io/vectormotion.github.io/",
+    "description": "A personal AI and robotics lab for notes, experiments, demos, and intelligent systems projects.",
+    "keywords": ["AI", "robotics", "automation", "machine learning", "computer vision", "intelligent systems"]
+  }
+  </script>
+
   <style>
     :root {
       color-scheme: dark;
@@ -14,6 +36,7 @@
       --muted: #a8b3c7;
       --accent: #63e6be;
       --accent-2: #7c5cff;
+      --line: rgba(255, 255, 255, 0.14);
     }
 
     * { box-sizing: border-box; }
@@ -29,14 +52,14 @@
       color: var(--text);
       display: grid;
       place-items: center;
-      overflow: hidden;
+      padding: 32px 16px;
     }
 
     .motion-lines {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.3;
       background-image:
         linear-gradient(115deg, transparent 0 45%, rgba(99, 230, 190, 0.55) 46%, transparent 47% 100%),
         linear-gradient(115deg, transparent 0 58%, rgba(124, 92, 255, 0.6) 59%, transparent 60% 100%);
@@ -50,9 +73,9 @@
     }
 
     main {
-      width: min(920px, calc(100% - 32px));
+      width: min(980px, 100%);
       padding: 56px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid var(--line);
       border-radius: 32px;
       background: var(--card);
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
@@ -82,12 +105,52 @@
       letter-spacing: -0.08em;
     }
 
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
     p {
-      max-width: 620px;
       margin: 0;
       color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-size: clamp(1.02rem, 1.8vw, 1.25rem);
       line-height: 1.7;
+    }
+
+    .lead {
+      max-width: 720px;
+      font-size: clamp(1.12rem, 2vw, 1.42rem);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .card {
+      min-height: 170px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mission {
+      margin-top: 30px;
+      padding: 24px;
+      border-left: 4px solid var(--accent);
+      border-radius: 18px;
+      background: rgba(99, 230, 190, 0.08);
     }
 
     .actions {
@@ -119,7 +182,7 @@
       background: rgba(255, 255, 255, 0.1);
       color: var(--text);
       box-shadow: none;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid var(--line);
     }
 
     footer {
@@ -128,8 +191,9 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 800px) {
       main { padding: 34px 24px; border-radius: 24px; }
+      .grid { grid-template-columns: 1fr; }
       .actions { flex-direction: column; }
       .button { width: 100%; }
     }
@@ -138,16 +202,49 @@
 <body>
   <div class="motion-lines" aria-hidden="true"></div>
   <main>
-    <span class="badge">● Live on GitHub Pages</span>
+    <span class="badge">● Personal AI + Robotics Lab</span>
     <h1>Vector Motion</h1>
-    <p>
-      A clean starter website for vectormotion.github.io. This page is hosted for free with GitHub Pages and can be expanded into a portfolio, product page, demo site, or app landing page.
+    <p class="lead">
+      Vector Motion is my personal home base for AI, robotics, automation, and intelligent systems. This account exists to collect practical experiments, learning notes, prototypes, and useful links as I explore how software intelligence connects with movement in the physical world.
     </p>
+
+    <section class="mission" aria-labelledby="mission-title">
+      <h2 id="mission-title">Mission</h2>
+      <p>
+        The mission of this space is simple: learn by building. I want to use this GitHub Pages site as a lightweight README for myself — a place to organize ideas about artificial intelligence, robot motion, computer vision, automation workflows, sensors, controls, and future AI-powered machines.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Focus areas">
+      <article class="card">
+        <h2>AI</h2>
+        <p>Notes and experiments about machine learning, generative AI, agents, reasoning systems, and practical tools that help people think and build faster.</p>
+      </article>
+      <article class="card">
+        <h2>Robotics</h2>
+        <p>Ideas around robot motion, perception, planning, control, embodied intelligence, and how robots can understand and act in the real world.</p>
+      </article>
+      <article class="card">
+        <h2>Automation</h2>
+        <p>Small demos, scripts, workflows, and connected systems that combine code, sensors, APIs, and AI assistants to reduce repetitive work.</p>
+      </article>
+    </section>
+
+    <section class="mission" aria-labelledby="future-title">
+      <h2 id="future-title">What I may add here later</h2>
+      <ul>
+        <li>Project notes for AI and robotics experiments</li>
+        <li>Links to demos, repositories, videos, and research notes</li>
+        <li>Short explanations of useful concepts in robotics and machine learning</li>
+        <li>A portfolio-style index of tools, prototypes, and learning milestones</li>
+      </ul>
+    </section>
+
     <div class="actions">
       <a class="button" href="https://github.com/damifan2016/vectormotion.github.io">View Repository</a>
-      <a class="button secondary" href="mailto:hello@example.com">Contact</a>
+      <a class="button secondary" href="https://damifan2016.github.io/vectormotion.github.io/">Live Site</a>
     </div>
-    <footer>© <span id="year"></span> Vector Motion. Built with HTML + CSS.</footer>
+    <footer>© <span id="year"></span> Vector Motion. AI, robotics, automation, and intelligent systems.</footer>
   </main>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
