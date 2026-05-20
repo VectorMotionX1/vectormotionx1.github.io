@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Level Up Match Toolkit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">VEX IQ Team Tool</p>
+          <h1>Level Up Match Toolkit</h1>
+        </div>
+        <div class="status-grid">
+          <a class="status-link" href="https://www.vexrobotics.com/iq/competition/viqc-current-game" target="_blank" rel="noreferrer">Official Game Page</a>
+          <a class="status-link" href="https://link.vex.com/docs/26-27/viqrc/game-manual" target="_blank" rel="noreferrer">Official PDF</a>
+        </div>
+      </section>
+
+      <nav class="view-tabs" aria-label="Toolkit views">
+        <button class="view-tab active" type="button" data-view="toolsView">Match Tools</button>
+        <button class="view-tab" type="button" data-view="rulesView">Rule Reference</button>
+        <button class="view-tab" type="button" data-view="changelogView">Changelog</button>
+      </nav>
+
+      <section id="toolsView" class="tool-grid app-view active">
+        <section class="score-panel">
+          <div class="panel-heading">
+            <h2>Score Calculator</h2>
+            <button id="resetScore" class="secondary-button" type="button">Reset</button>
+          </div>
+          <div id="scoreRows" class="score-rows"></div>
+          <div class="score-total">
+            <span>Total</span>
+            <strong id="scoreTotal">0</strong>
+          </div>
+          <div class="bag-counter">
+            <span id="bagCount">0</span>
+            <span>Bean Bags counted</span>
+            <span id="bagWarning"></span>
+          </div>
+        </section>
+
+        <section class="timer-panel">
+          <div class="panel-heading">
+            <h2>Match Clock</h2>
+            <button id="resetTimer" class="secondary-button" type="button">Reset</button>
+          </div>
+          <div class="clock" id="clock">1:00</div>
+          <div class="clock-phase" id="clockPhase">Driver 1 ready</div>
+          <div class="timer-actions">
+            <button id="startPauseTimer" type="button">Start</button>
+            <button id="markSwitch" class="secondary-button" type="button">Mark Switch</button>
+          </div>
+          <ol class="timeline">
+            <li>0:60 start match</li>
+            <li>0:30 switch drivers</li>
+            <li>0:00 stop moving</li>
+          </ol>
+        </section>
+
+        <section class="checklist-panel">
+          <div class="panel-heading">
+            <h2>Pre-Match Checklist</h2>
+            <button id="clearChecklist" class="secondary-button" type="button">Clear</button>
+          </div>
+          <div id="checklist" class="checklist"></div>
+        </section>
+
+        <section class="notes-panel">
+          <div class="panel-heading">
+            <h2>Match Plan</h2>
+            <button id="printSheet" class="secondary-button" type="button">Print</button>
+          </div>
+          <div class="meta-grid">
+            <label>Team <input id="teamNumber" type="text" placeholder="Team #" /></label>
+            <label>Match <input id="matchNumber" type="text" placeholder="Q12" /></label>
+            <label>Partner <input id="partnerTeam" type="text" placeholder="Team #" /></label>
+          </div>
+          <label class="text-label">Opening route
+            <textarea id="openingRoute" rows="3" placeholder="Where do we start, first bean bag, first goal?"></textarea>
+          </label>
+          <label class="text-label">Driver / loader notes
+            <textarea id="driverNotes" rows="3" placeholder="Switch plan, load zone plan, don't-forget items"></textarea>
+          </label>
+          <label class="text-label">Post-match notes
+            <textarea id="postMatchNotes" rows="3" placeholder="What worked? What should change next match?"></textarea>
+          </label>
+        </section>
+
+        <section class="quick-panel">
+          <h2>Quick Rules</h2>
+          <div class="rule-grid">
+            <article><strong>Scoring</strong><span>Floor 1 · L1 3 · L2 6 · L3 12 · L4 16</span></article>
+            <article><strong>Starting</strong><span>11 x 20 x 15 in, stationary, preload placed legally.</span></article>
+            <article><strong>Expansion</strong><span>Horizontal max 11 x 24 after start; vertical unlimited.</span></article>
+            <article><strong>Possession</strong><span>One Bean Bag. Stop and clear extras immediately.</span></article>
+            <article><strong>Drive Team</strong><span>Driver 1, Driver 2, Loader. Switch at 30 seconds.</span></article>
+            <article><strong>Source</strong><span>Confirm close calls in the Official PDF.</span></article>
+          </div>
+        </section>
+      </section>
+
+      <section id="rulesView" class="rules-panel app-view">
+        <div class="panel-heading">
+          <div>
+            <h2>Rule Quick Reference</h2>
+            <p id="rulesMeta" class="muted-text">Loading the manual Quick Reference Guide...</p>
+          </div>
+          <input id="ruleSearch" type="search" placeholder="Search <SG1>, expansion, preload, skills..." />
+        </div>
+        <div id="ruleTabs" class="rule-tabs"></div>
+        <div id="ruleList" class="rule-list compact"></div>
+      </section>
+
+      <section id="changelogView" class="rules-panel app-view">
+        <div class="panel-heading">
+          <div>
+            <h2>Game Manual Changelog</h2>
+            <p id="changelogMeta" class="muted-text">Loading changelog...</p>
+          </div>
+        </div>
+        <div id="changelogList" class="changelog-list"></div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
