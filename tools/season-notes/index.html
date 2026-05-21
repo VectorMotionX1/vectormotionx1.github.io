@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Up Season Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Vector Motion X1</p>
+        <h1>Level Up Season Notes</h1>
+      </div>
+      <div class="actions">
+        <button id="exportButton" type="button">Export JSON</button>
+        <label class="import-button">
+          Import JSON
+          <input id="importInput" type="file" accept="application/json" />
+        </label>
+        <button id="printButton" type="button">Print</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="panel full">
+        <div class="section-heading">
+          <div>
+            <h2>Season Focus</h2>
+            <p>Keep the pre-season work visible before real event data starts arriving.</p>
+          </div>
+          <button id="resetDemoButton" type="button">Restore Starter Notes</button>
+        </div>
+        <textarea id="seasonFocus" rows="4"></textarea>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>Goals</h2>
+          <button data-add="goals" type="button">Add Goal</button>
+        </div>
+        <div id="goals" class="stack"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>Roster Notes</h2>
+          <button data-add="roster" type="button">Add Person</button>
+        </div>
+        <div id="roster" class="stack"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Practice Routine</h2>
+        <div id="practiceChecklist" class="checklist"></div>
+      </section>
+
+      <section class="panel">
+        <h2>First Event Readiness</h2>
+        <div id="readinessChecklist" class="checklist"></div>
+      </section>
+
+      <section class="panel full">
+        <div class="section-heading">
+          <h2>Weekly Review</h2>
+          <span id="savedStatus">Saved locally</span>
+        </div>
+        <div id="weeklyReview" class="review-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>Idea Backlog</h2>
+          <button data-add="ideas" type="button">Add Idea</button>
+        </div>
+        <div id="ideas" class="stack"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Related Tools</h2>
+        <div class="links">
+          <a href="/tools/practice-logger/">Practice Logger</a>
+          <a href="/tools/robot-log/">Robot Log</a>
+          <a href="/level-up-toolkit/">Match Toolkit</a>
+          <a href="/">Project Index</a>
+        </div>
+      </section>
+    </main>
+
+    <template id="noteTemplate">
+      <article class="note">
+        <input class="title" />
+        <textarea class="body" rows="3"></textarea>
+        <button class="remove" type="button">Remove</button>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

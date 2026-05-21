@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Up Robot Log</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Vector Motion X1</p>
+        <h1>Level Up Robot Log</h1>
+      </div>
+      <div class="actions">
+        <button id="exportButton" type="button">Export JSON</button>
+        <label class="import-button">
+          Import JSON
+          <input id="importInput" type="file" accept="application/json" />
+        </label>
+        <button id="printButton" type="button">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel form-panel" aria-labelledby="formTitle">
+        <h2 id="formTitle">Add Robot Version</h2>
+        <form id="versionForm">
+          <input type="hidden" id="versionId" />
+
+          <label>
+            Version name
+            <input id="name" required placeholder="V1, V2 intake test, light chassis" />
+          </label>
+
+          <div class="split">
+            <label>
+              Date
+              <input id="date" type="date" required />
+            </label>
+            <label>
+              Status
+              <select id="status">
+                <option>Testing</option>
+                <option>Keep</option>
+                <option>Retired</option>
+                <option>Idea</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Subsystems</legend>
+            <div class="chips" id="subsystems"></div>
+          </fieldset>
+
+          <label>
+            What changed?
+            <textarea id="summary" required rows="3" placeholder="Short build/code change summary"></textarea>
+          </label>
+
+          <label>
+            Why did we change it?
+            <textarea id="reason" rows="3" placeholder="Problem, hypothesis, or goal"></textarea>
+          </label>
+
+          <label>
+            Test result
+            <textarea id="testResult" rows="3" placeholder="Practice result, observation, or score impact"></textarea>
+          </label>
+
+          <div class="split">
+            <label>
+              Improved
+              <textarea id="improved" rows="3"></textarea>
+            </label>
+            <label>
+              Got worse
+              <textarea id="worse" rows="3"></textarea>
+            </label>
+          </div>
+
+          <label>
+            Next action
+            <input id="nextAction" placeholder="Keep testing, rebuild, tune code..." />
+          </label>
+
+          <label>
+            Photo/video/link
+            <input id="mediaLink" type="url" placeholder="https://..." />
+          </label>
+
+          <div class="form-actions">
+            <button class="primary" type="submit">Save Version</button>
+            <button id="resetButton" type="button">Clear</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="listTitle">
+        <div class="section-heading">
+          <h2 id="listTitle">Versions</h2>
+          <span id="versionCount">0 saved</span>
+        </div>
+        <div class="filters">
+          <input id="searchInput" placeholder="Search versions, notes, subsystem..." />
+          <select id="statusFilter">
+            <option value="all">All status</option>
+            <option>Testing</option>
+            <option>Keep</option>
+            <option>Retired</option>
+            <option>Idea</option>
+          </select>
+        </div>
+        <div id="versionList" class="version-list"></div>
+      </section>
+    </main>
+
+    <template id="versionCardTemplate">
+      <article class="version-card">
+        <div class="card-head">
+          <div>
+            <h3></h3>
+            <p class="meta"></p>
+          </div>
+          <span class="status-pill"></span>
+        </div>
+        <p class="summary"></p>
+        <div class="tag-row"></div>
+        <div class="next-action"></div>
+        <div class="card-actions">
+          <button class="edit" type="button">Edit</button>
+          <button class="delete" type="button">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
